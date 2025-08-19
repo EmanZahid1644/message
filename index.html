@@ -1,0 +1,858 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For My Special Person</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: linear-gradient(135deg, #2d0a31, #1f0c2e, #1a0a26);
+            color: #fdf2f8;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow-x: hidden;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 900px;
+            width: 100%;
+            background: rgba(60, 11, 68, 0.7);
+            backdrop-filter: blur(15px);
+            border-radius: 24px;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+            padding: 50px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(255, 182, 193, 0.3);
+            animation: containerGlow 6s infinite alternate;
+        }
+        
+        @keyframes containerGlow {
+            0% { 
+                box-shadow: 0 0 25px rgba(255, 105, 180, 0.3), 0 25px 50px rgba(0, 0, 0, 0.5);
+                border-color: rgba(255, 182, 193, 0.3);
+            }
+            50% { 
+                box-shadow: 0 0 35px rgba(255, 105, 180, 0.5), 0 30px 55px rgba(0, 0, 0, 0.6);
+                border-color: rgba(255, 182, 193, 0.5);
+            }
+            100% { 
+                box-shadow: 0 0 45px rgba(255, 20, 147, 0.4), 0 35px 60px rgba(0, 0, 0, 0.7);
+                border-color: rgba(255, 182, 193, 0.4);
+            }
+        }
+        
+        .accent {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            filter: blur(35px);
+            z-index: -1;
+            animation: pulse 12s infinite alternate;
+        }
+        
+        .accent-1 {
+            top: -150px;
+            right: -150px;
+            background: radial-gradient(circle, rgba(255, 182, 193, 0.4) 0%, transparent 70%);
+            animation: pulse 8s infinite alternate, rotate 20s linear infinite;
+        }
+        
+        .accent-2 {
+            bottom: -150px;
+            left: -150px;
+            background: radial-gradient(circle, rgba(219, 112, 147, 0.4) 0%, transparent 70%);
+            animation: pulse 10s infinite alternate-reverse, rotate 25s linear infinite reverse;
+        }
+        
+        @keyframes pulse {
+            0% { opacity: 0.2; transform: scale(1); }
+            50% { opacity: 0.4; transform: scale(1.2); }
+            100% { opacity: 0.2; transform: scale(1); }
+        }
+        
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .floating-elements {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: -1;
+        }
+        
+        .floating-element {
+            position: absolute;
+            opacity: 0;
+            animation: floatElement 25s linear infinite;
+        }
+        
+        @keyframes floatElement {
+            0% { 
+                transform: translateY(100vh) rotate(0deg) scale(0.5); 
+                opacity: 0; 
+            }
+            5% { 
+                opacity: 0.8; 
+                transform: translateY(90vh) rotate(45deg) scale(0.8);
+            }
+            90% { 
+                opacity: 0.7; 
+            }
+            100% { 
+                transform: translateY(-100px) rotate(720deg) scale(1.2); 
+                opacity: 0; 
+            }
+        }
+        
+        .header {
+            margin-bottom: 40px;
+            position: relative;
+        }
+        
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 5rem;
+            margin-bottom: 15px;
+            background: linear-gradient(to right, #ffb6c1, #ff69b4, #db7093);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradientShift 4s linear infinite, textFloat 6s ease-in-out infinite;
+            text-shadow: 0 0 20px rgba(255, 105, 180, 0.4);
+            letter-spacing: 2px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        h1::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(to right, transparent, #ffb6c1, #ff69b4, transparent);
+            transform: scaleX(0);
+            transform-origin: center;
+            animation: expandLine 3s ease forwards 1s;
+        }
+        
+        @keyframes expandLine {
+            0% { transform: scaleX(0); }
+            100% { transform: scaleX(1); }
+        }
+        
+        @keyframes gradientShift {
+            0% { background-position: 0% center; }
+            100% { background-position: 200% center; }
+        }
+        
+        @keyframes textFloat {
+            0% { transform: translateY(0) rotate(0deg); }
+            25% { transform: translateY(-8px) rotate(0.5deg); }
+            50% { transform: translateY(0) rotate(0deg); }
+            75% { transform: translateY(8px) rotate(-0.5deg); }
+            100% { transform: translateY(0) rotate(0deg); }
+        }
+        
+        .subtitle {
+            font-size: 1.4rem;
+            color: #f8d7da;
+            margin-bottom: 10px;
+            font-weight: 300;
+            letter-spacing: 1px;
+            animation: fadeIn 2s ease, slideInFromLeft 2s ease;
+        }
+        
+        @keyframes slideInFromLeft {
+            0% { transform: translateX(-50px); opacity: 0; }
+            100% { transform: translateX(0); opacity: 1; }
+        }
+        
+        .divider {
+            height: 3px;
+            width: 150px;
+            background: linear-gradient(to right, transparent, #ffb6c1, #ff69b4, transparent);
+            margin: 30px auto;
+            border: none;
+            animation: expandWidth 2s ease, colorShift 5s infinite alternate;
+        }
+        
+        @keyframes expandWidth {
+            0% { width: 0; opacity: 0; }
+            100% { width: 150px; opacity: 1; }
+        }
+        
+        @keyframes colorShift {
+            0% { background: linear-gradient(to right, transparent, #ffb6c1, #ff69b4, transparent); }
+            50% { background: linear-gradient(to right, transparent, #ff69b4, #ffb6c1, transparent); }
+            100% { background: linear-gradient(to right, transparent, #ffb6c1, #ff69b4, transparent); }
+        }
+        
+        .message-container {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 40px;
+            margin: 40px 0;
+            text-align: left;
+            border-left: 4px solid #ffb6c1;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            animation: slideIn 1.5s ease, borderPulse 3s infinite alternate;
+        }
+        
+        @keyframes borderPulse {
+            0% { border-left-color: #ffb6c1; }
+            50% { border-left-color: #ff69b4; }
+            100% { border-left-color: #ffb6c1; }
+        }
+        
+        @keyframes slideIn {
+            0% { transform: translateY(50px); opacity: 0; }
+            100% { transform: translateY(0); opacity: 1; }
+        }
+        
+        .message-container:hover {
+            transform: translateY(-5px) scale(1.01);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+        }
+        
+        .message-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent, rgba(255, 182, 193, 0.15), transparent);
+            transform: translateX(-100%);
+            transition: transform 0.6s ease;
+        }
+        
+        .message-container:hover::before {
+            transform: translateX(100%);
+        }
+        
+        .message-text {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: #fce4ec;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 2;
+            animation: fadeInUp 1s ease;
+            transition: transform 0.3s ease;
+        }
+        
+        .message-text:hover {
+            transform: translateX(10px);
+        }
+        
+        @keyframes fadeInUp {
+            0% { transform: translateY(20px); opacity: 0; }
+            100% { transform: translateY(0); opacity: 1; }
+        }
+        
+        .highlight {
+            color: #ffb6c1;
+            font-weight: 500;
+            text-shadow: 0 0 15px rgba(255, 182, 193, 0.5);
+            animation: highlightPulse 2s infinite alternate;
+        }
+        
+        @keyframes highlightPulse {
+            0% { text-shadow: 0 0 15px rgba(255, 182, 193, 0.5); }
+            100% { text-shadow: 0 0 20px rgba(255, 182, 193, 0.8), 0 0 30px rgba(255, 105, 180, 0.6); }
+        }
+        
+        .quote {
+            font-style: italic;
+            margin: 40px 0;
+            padding: 35px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 18px;
+            text-align: center;
+            position: relative;
+            border: 1px solid rgba(255, 182, 193, 0.3);
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            animation: fadeIn 2s ease, quoteGlow 4s infinite alternate;
+            transition: transform 0.4s ease;
+            color: #f8d7da;
+        }
+        
+        .quote:hover {
+            transform: scale(1.02) rotate(0.5deg);
+        }
+        
+        @keyframes quoteGlow {
+            0% { box-shadow: 0 0 15px rgba(255, 182, 193, 0.3); }
+            100% { box-shadow: 0 0 25px rgba(255, 105, 180, 0.4); }
+        }
+        
+        .quote:before, .quote:after {
+            content: """;
+            font-family: 'Playfair Display', serif;
+            font-size: 6rem;
+            color: rgba(255, 182, 193, 0.4);
+            position: absolute;
+            line-height: 1;
+            animation: quoteMarkPulse 3s infinite alternate;
+        }
+        
+        @keyframes quoteMarkPulse {
+            0% { opacity: 0.3; transform: scale(1); }
+            100% { opacity: 0.5; transform: scale(1.1); }
+        }
+        
+        .quote:before {
+            top: 0;
+            left: 20px;
+        }
+        
+        .quote:after {
+            content: """;
+            bottom: -40px;
+            right: 20px;
+        }
+        
+        .interactive-section {
+            margin: 50px 0;
+            position: relative;
+            animation: fadeIn 2.5s ease;
+        }
+        
+        .btn {
+            background: linear-gradient(to right, #ffb6c1, #ff69b4);
+            border: none;
+            padding: 20px 55px;
+            font-size: 1.3rem;
+            border-radius: 50px;
+            color: #2d0a31;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            box-shadow: 0 8px 30px rgba(255, 105, 180, 0.5);
+            font-weight: 600;
+            letter-spacing: 1px;
+            display: inline-flex;
+            align-items: center;
+            gap: 15px;
+            position: relative;
+            overflow: hidden;
+            animation: pulse 2s infinite, btnGlow 3s infinite alternate;
+            z-index: 1;
+        }
+        
+        @keyframes btnGlow {
+            0% { box-shadow: 0 8px 30px rgba(255, 182, 193, 0.5); }
+            50% { box-shadow: 0 8px 40px rgba(255, 105, 180, 0.6); }
+            100% { box-shadow: 0 8px 30px rgba(255, 182, 193, 0.5); }
+        }
+        
+        .btn:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.6), transparent);
+            transition: 0.5s;
+            z-index: -1;
+        }
+        
+        .btn:hover:before {
+            left: 100%;
+        }
+        
+        .btn:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 12px 35px rgba(255, 105, 180, 0.7);
+            animation: none;
+        }
+        
+        .btn:active {
+            transform: translateY(0);
+        }
+        
+        .hidden-message {
+            margin-top: 40px;
+            padding: 35px;
+            background: rgba(255, 255, 255, 0.12);
+            border-radius: 20px;
+            display: none;
+            animation: fadeIn 1.5s ease, messageGlow 3s infinite alternate;
+            border: 1px solid rgba(255, 182, 193, 0.3);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+            position: relative;
+            overflow: hidden;
+            color: #fce4ec;
+        }
+        
+        @keyframes messageGlow {
+            0% { box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3); }
+            100% { box-shadow: 0 12px 40px rgba(255, 105, 180, 0.3); }
+        }
+        
+        .hidden-message:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 6px;
+            height: 100%;
+            background: linear-gradient(to bottom, #ffb6c1, #ff69b4);
+            animation: borderGradient 3s infinite alternate;
+        }
+        
+        @keyframes borderGradient {
+            0% { background: linear-gradient(to bottom, #ffb6c1, #ff69b4); }
+            50% { background: linear-gradient(to bottom, #ff69b4, #ffb6c1); }
+            100% { background: linear-gradient(to bottom, #ffb6c1, #ff69b4); }
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .support-cards {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-top: 60px;
+            animation: fadeIn 3s ease;
+        }
+        
+        .card {
+            background: rgba(255, 255, 255, 0.12);
+            border-radius: 22px;
+            padding: 35px 30px;
+            width: 270px;
+            transition: all 0.5s ease;
+            border: 1px solid rgba(255, 182, 193, 0.3);
+            position: relative;
+            overflow: hidden;
+            animation: cardAppear 1s ease, cardFloat 5s ease-in-out infinite;
+        }
+        
+        @keyframes cardFloat {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0); }
+        }
+        
+        @keyframes cardAppear {
+            0% { transform: scale(0.8); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+        
+        .card:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 6px;
+            background: linear-gradient(to right, #ffb6c1, #ff69b4);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.5s ease;
+        }
+        
+        .card:hover:before {
+            transform: scaleX(1);
+        }
+        
+        .card:hover {
+            transform: translateY(-12px) scale(1.05);
+            background: rgba(255, 255, 255, 0.15);
+            box-shadow: 0 18px 40px rgba(0, 0, 0, 0.4);
+            animation: none;
+        }
+        
+        .card i {
+            font-size: 3.5rem;
+            margin-bottom: 25px;
+            background: linear-gradient(to right, #ffb6c1, #ff69b4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            filter: drop-shadow(0 5px 15px rgba(255, 105, 180, 0.4));
+            animation: iconPulse 3s infinite alternate;
+        }
+        
+        @keyframes iconPulse {
+            0% { transform: scale(1); filter: drop-shadow(0 5px 15px rgba(255, 182, 193, 0.4)); }
+            100% { transform: scale(1.1); filter: drop-shadow(0 5px 20px rgba(255, 105, 180, 0.6)); }
+        }
+        
+        .card h3 {
+            font-family: 'Playfair Display', serif;
+            margin-bottom: 15px;
+            font-size: 1.7rem;
+            color: #ffb6c1;
+            animation: textColorShift 4s infinite alternate;
+        }
+        
+        @keyframes textColorShift {
+            0% { color: #ffb6c1; }
+            50% { color: #ff69b4; }
+            100% { color: #ffb6c1; }
+        }
+        
+        .card p {
+            color: #f8d7da;
+            font-size: 1.05rem;
+            line-height: 1.6;
+            transition: transform 0.3s ease;
+        }
+        
+        .card:hover p {
+            transform: translateY(-5px);
+        }
+        
+        footer {
+            margin-top: 80px;
+            font-size: 1.1rem;
+            color: #f8d7da;
+            position: relative;
+            animation: fadeIn 3.5s ease;
+        }
+        
+        .signature {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            margin-top: 15px;
+            background: linear-gradient(to right, #ffb6c1, #ff69b4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: 2px;
+            text-shadow: 0 0 15px rgba(255, 182, 193, 0.3);
+            animation: signatureFloat 4s ease-in-out infinite;
+        }
+        
+        @keyframes signatureFloat {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+            100% { transform: translateY(0); }
+        }
+        
+        .floating-hearts {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: -1;
+        }
+        
+        .heart {
+            position: absolute;
+            font-size: 28px;
+            opacity: 0;
+            animation: floatHeart 18s ease-in-out infinite;
+        }
+        
+        @keyframes floatHeart {
+            0% { transform: translateY(100px) rotate(0deg) scale(0.5); opacity: 0; }
+            10% { opacity: 0.8; transform: translateY(90vh) rotate(45deg) scale(1); }
+            90% { opacity: 0.8; }
+            100% { transform: translateY(-500px) rotate(720deg) scale(1.5); opacity: 0; }
+        }
+        
+        .firework {
+            position: absolute;
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            opacity: 0;
+            animation: fireworkExplode 2s ease-out infinite;
+        }
+        
+        @keyframes fireworkExplode {
+            0% { transform: translateY(100vh) scale(0); opacity: 0; }
+            10% { opacity: 1; }
+            30% { transform: translateY(0) scale(1); opacity: 1; }
+            100% { transform: translateY(0) scale(10); opacity: 0; }
+        }
+        
+        .particles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            pointer-events: none;
+        }
+        
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            border-radius: 50%;
+            background: rgba(255, 182, 193, 0.7);
+            animation: particleFloat 15s linear infinite;
+        }
+        
+        @keyframes particleFloat {
+            0% { transform: translateY(100vh) rotate(0deg) scale(0.5); opacity: 0; }
+            10% { opacity: 0.7; }
+            90% { opacity: 0.7; }
+            100% { transform: translateY(-100px) rotate(360deg) scale(1.2); opacity: 0; }
+        }
+        
+        @media (max-width: 768px) {
+            h1 { font-size: 3.8rem; }
+            .message-text { font-size: 1.1rem; }
+            .container { padding: 40px 25px; }
+            .card { width: 100%; max-width: 320px; }
+            .message-container { padding: 30px; }
+        }
+        
+        @media (max-width: 480px) {
+            h1 { font-size: 3rem; }
+            .btn { padding: 18px 45px; font-size: 1.2rem; }
+            .message-container { padding: 25px 20px; }
+            .quote { padding: 25px; font-size: 1.3rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="accent accent-1"></div>
+        <div class="accent accent-2"></div>
+        <div class="floating-elements" id="floatingElements"></div>
+        <div class="floating-hearts" id="heartsContainer"></div>
+        <div class="particles" id="particlesContainer"></div>
+        
+        <div class="header">
+            <h1>Always With You</h1>
+            <p class="subtitle">A message straight from my heart</p>
+            <div class="divider"></div>
+        </div>
+        
+        <div class="message-container">
+            <p class="message-text">
+                Mujhe pata hai abhi teri life mein bohot si cheezein ek sath chal rahi hain aur kabhi kabhi sab kuch thoda heavy lagta hai. Lekin sun, teri strength aur patience hamesha mujhe inspire karte hain. Problems har kisi ki life ka hissa hoti hain, lekin tu unhe jis tarah face karte ho, wo teri real value dikhata hai.
+            </p>
+            
+            <p class="message-text">
+                Main chahti hoon tumhe hamesha yaad rahe ke tu akela nahi hy. Main tumhare saath hoon — tumhari khushi mein bhi aur tumhare tough time mein bhi. Tu meri life ka bohot important part ho aur meri duaen hamesha tumhare saath hoti hain. Tu jitni mehnat aur honesty se cheezein handle karta hy, mujhe poora yaqeen hai ke tu in mushkilon se bhi nikal jayega aur aur bhi strong ban kar samne aaoge.
+            </p>
+            
+            <p class="message-text">
+                Mujhe tum par fakhr hai, aur main chahti hoon ke tum kabhi bhi khud par doubt na karo. Chahe duniya kuch bhi kahe, tum meri nazar mein hamesha best ho. <span class="highlight">🫶✨</span>
+            </p>
+        </div>
+        
+        <div class="quote">
+            "The strongest people aren't those who show strength in front of us but those who win battles we know nothing about."
+        </div>
+        
+        <div class="interactive-section">
+            <button class="btn" id="supportBtn">
+                <i class="fas fa-heart"></i> Your Special Message
+            </button>
+            
+            <div class="hidden-message" id="hiddenMessage">
+                <h3>You Are Incredible! 🌟</h3>
+                <p>Remember that every challenge is making you stronger. I believe in you completely and I'm always here to support you, no matter what. You've got this!</p>
+            </div>
+        </div>
+        
+        <div class="support-cards">
+            <div class="card">
+                <i class="fas fa-heart"></i>
+                <h3>Always There</h3>
+                <p>Through good times and bad, I'll always be by your side</p>
+            </div>
+            <div class="card">
+                <i class="fas fa-gem"></i>
+                <h3>Unconditional</h3>
+                <p>My care and support for you has no conditions</p>
+            </div>
+            <div class="card">
+                <i class="fas fa-star"></i>
+                <h3>Believe in You</h3>
+                <p>I have complete faith in your strength and abilities</p>
+            </div>
+        </div>
+        
+        <footer>
+            <p>Made with love for someone very special</p>
+            <p class="signature">Always Yours</p>
+        </footer>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Create floating elements
+            const floatingElements = document.getElementById('floatingElements');
+            const symbols = ['❤', '✨', '🌸', '💖', '🌟', '💕', '💫', '🌹', '💌', '💞'];
+            
+            for (let i = 0; i < 30; i++) {
+                const element = document.createElement('div');
+                element.classList.add('floating-element');
+                element.innerHTML = symbols[Math.floor(Math.random() * symbols.length)];
+                element.style.left = Math.random() * 100 + '%';
+                element.style.animationDelay = Math.random() * 25 + 's';
+                element.style.fontSize = (Math.random() * 20 + 15) + 'px';
+                element.style.color = `hsl(${Math.random() * 30 + 330}, 70%, 70%)`;
+                floatingElements.appendChild(element);
+            }
+            
+            // Create floating hearts
+            const heartsContainer = document.getElementById('heartsContainer');
+            const heartColors = ['#ffb6c1', '#ff69b4', '#db7093', '#ff1493', '#ffb6c1'];
+            
+            for (let i = 0; i < 25; i++) {
+                const heart = document.createElement('div');
+                heart.classList.add('heart');
+                heart.innerHTML = '❤';
+                heart.style.left = Math.random() * 100 + '%';
+                heart.style.color = heartColors[Math.floor(Math.random() * heartColors.length)];
+                heart.style.animationDelay = Math.random() * 18 + 's';
+                heart.style.fontSize = (Math.random() * 25 + 20) + 'px';
+                heartsContainer.appendChild(heart);
+            }
+            
+            // Create particles
+            const particlesContainer = document.getElementById('particlesContainer');
+            for (let i = 0; i < 50; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 15 + 's';
+                particle.style.background = `hsl(${Math.random() * 30 + 330}, 70%, 70%)`;
+                particlesContainer.appendChild(particle);
+            }
+            
+            // Button interaction
+            const supportBtn = document.getElementById('supportBtn');
+            const hiddenMessage = document.getElementById('hiddenMessage');
+            
+            supportBtn.addEventListener('click', function() {
+                if (hiddenMessage.style.display === 'block') {
+                    hiddenMessage.style.display = 'none';
+                    supportBtn.innerHTML = '<i class="fas fa-heart"></i> Your Special Message';
+                } else {
+                    hiddenMessage.style.display = 'block';
+                    supportBtn.innerHTML = '<i class="fas fa-smile-wink"></i> Hide Message';
+                    
+                    // Add firework effect
+                    createFireworks();
+                }
+            });
+            
+            // Add some interactive effects to cards
+            const cards = document.querySelectorAll('.card');
+            cards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-12px) scale(1.05)';
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0) scale(1)';
+                });
+            });
+            
+            // Text animation
+            const messageTexts = document.querySelectorAll('.message-text');
+            messageTexts.forEach((text, index) => {
+                text.style.opacity = '0';
+                text.style.transform = 'translateY(30px)';
+                text.style.transition = `opacity 1.2s ease ${index * 0.5}s, transform 1.2s ease ${index * 0.5}s`;
+                
+                setTimeout(() => {
+                    text.style.opacity = '1';
+                    text.style.transform = 'translateY(0)';
+                }, 500 + (index * 500));
+            });
+            
+            // Create fireworks effect
+            function createFireworks() {
+                for (let i = 0; i < 15; i++) {
+                    setTimeout(() => {
+                        const firework = document.createElement('div');
+                        firework.classList.add('firework');
+                        firework.style.left = Math.random() * 100 + '%';
+                        firework.style.top = Math.random() * 100 + '%';
+                        firework.style.animationDelay = (i * 0.1) + 's';
+                        firework.style.background = `hsl(${Math.random() * 30 + 330}, 70%, 70%)`;
+                        document.body.appendChild(firework);
+                        
+                        setTimeout(() => {
+                            firework.remove();
+                        }, 2000);
+                    }, i * 100);
+                }
+            }
+            
+            // Add continuous subtle animations
+            function addContinuousAnimations() {
+                const elements = document.querySelectorAll('.message-text, .card, .quote');
+                
+                elements.forEach(el => {
+                    el.addEventListener('mouseenter', () => {
+                        el.style.transition = 'transform 0.3s ease';
+                        el.style.transform = 'translateY(-5px)';
+                    });
+                    
+                    el.addEventListener('mouseleave', () => {
+                        el.style.transform = 'translateY(0)';
+                    });
+                });
+            }
+            
+            addContinuousAnimations();
+            
+            // Add ripple effect to buttons
+            function addRippleEffect() {
+                const buttons = document.querySelectorAll('.btn');
+                
+                buttons.forEach(button => {
+                    button.addEventListener('click', function(e) {
+                        const x = e.clientX - e.target.getBoundingClientRect().left;
+                        const y = e.clientY - e.target.getBoundingClientRect().top;
+                        
+                        const ripple = document.createElement('span');
+                        ripple.classList.add('ripple');
+                        ripple.style.left = `${x}px`;
+                        ripple.style.top = `${y}px`;
+                        this.appendChild(ripple);
+                        
+                        setTimeout(() => {
+                            ripple.remove();
+                        }, 600);
+                    });
+                });
+            }
+            
+            addRippleEffect();
+        });
+    </script>
+</body>
+</html>
